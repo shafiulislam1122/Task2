@@ -1,42 +1,59 @@
 <?php
-$ufirstname=$_POST["ufirstname"];
-
-if($ufirstname=="")
+$firstname=$_REQUEST["FirstName"];
+$lastname=$_REQUEST["LastName"];
+if($firstname=="")
 {
-  echo" Please enter your name";
-}
-else{
-
-echo "Your user name is ".$_POST["ufirstname"];
+    echo "Please enter the First name.";
 }
 echo"<br>";
-$ulastname=$_POST["ulastname"];
-
-if($ufirstname=="")
+if($lastname=="")
 {
-  echo" Please enter your name";
+    echo "Please enter the Last name.";
 }
-else{
-
-echo "Your user name is ".$_POST["ulastname"];
-}
+else{echo "Hello ".$firstname." ".$lastname;}
 echo"<br>";
-
-$pass=$_POST["password"];
-if(strlen($pass)<8)
+$pass=$_REQUEST["Password"];
+if($pass=="")
 {
-    echo" Please a valid Password";
+    echo "Please insert the password.";
 }
-else{
-echo "Your Password is valid";
+elseif(strlen($pass)<9)
+{
+    echo "Your password must be munimum 8 characters.";
 }
+else{echo "You have valid Password!";}
 echo"<br>";
-if(isset($_POST["r1"]))
+$age=$_REQUEST["Age"];
+if($age=="")
 {
-    echo "you have selected ".$_POST["r1"];
-
+    echo "Please enter your age.";
 }
-else{
-    echo "you havn't selected any radio";
+else{echo "You are ".$age." years old";}
+echo"<br>";
+$email=$_REQUEST["Email"];
+echo "Your email is ".$email;
+echo"<br>";
+if(isset($_POST["Designation"]))
+{
+    echo "You have selected ".$_POST["Designation"];
 }
+else{echo "You have not selected any DESIGNATION";}
+echo"<br>";
+if(isset($_POST["pl1"]) || ($_POST["pl2"]) || ($_POST["pl3"]))
+{
+    echo "You preffered language ";
+    if(isset($_POST["pl1"]))
+    {
+        echo $_POST["pl1"]." ";
+    }
+    if(isset($_POST["pl2"]))
+    {
+        echo $_POST["pl2"]." ";
+    }
+    if(isset($_POST["pl3"]))
+    {
+        echo $_POST["pl3"]." ";
+    }
+}
+else{echo "You have not selected any preffered language ";}
 ?>
